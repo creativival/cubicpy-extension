@@ -1,87 +1,109 @@
-# ボクセラミング拡張機能
+# CubicPy Scratch 3 Extension
 
-### ゲームモードでのサイズ変換の覚書
+*[日本語](https://creativival.github.io/cubicpy-extension/)* | English
 
-- スクラッチの画面サイズは480x360
-- スプライトの画像サイズは128pxで、スクラッチ画面高さの8分の1とする
-- したがって、スクラッチで大きさを35にすると、画面のサイズに対して、128 x 0.35 / 360 = 0.1244444 となる（ほぼ8分の1）
+![CubicPy Logo](https://creativival.github.io/CubicPy/assets/cubicpy_logo.png)
 
-ここまでで、スクラッチの画面サイズに対して、スプライトサイズが8分の1になるように設定されている。
+## What is CubicPy?
 
-次は、ボクセラミングのスプライトサイズの計算を行う。
+A 3D programming learning app that allows you to place and construct physical objects using code.
 
-- ボクセラミングの画面サイズは、縦64センチになるようにする。
-- そのためには、画面サイズに　64 / 360 = 0.17777777777777778 の係数を掛ければ良い。
-- 次に、スプライトの送信スケールを1にする。
-- そのために、1 / 35の係数を掛ければ良い。
+"CubicPy" - Please call it "Cubepy" for short!
 
-<p align="center"><img src="https://creativival.github.io/cubicpy/image/turtle_cage.png" alt="turtle_cage" width="50%"/></p>
+## App Description
 
-[Xcratch](https://xcratch.github.io/)用のボクセラミング拡張機能
+CubicPy is an application that lets you place objects in 3D space using Python code and build worlds that operate with realistic physics. You can freely place objects like boxes and spheres to create structures, and learn programming while experiencing physical laws like gravity and collisions.
 
-*Read this in other languages: [English](README.en.md), [日本語](README.md)*
+![CubicPy Sample Animation Gif](https://creativival.github.io/CubicPy/assets/cubicpy_sample.gif)
 
-## ボクセラミングとは
+You can observe realistic collapse processes using physics calculations by tilting the ground or removing objects from the structures you create. Additionally, you can check physical behavior under different gravity environments by changing the gravity coefficient. Furthermore, it's possible to set initial velocity vectors to launch objects.
 
-ボクセラミング = ボクセル + プログラミング
+## What is the CubicPy Extension?
 
-ボクセラミングはARKitを利用したプログラミング学習アプリです。ARKit互換のiPhoneおよびiPad（iOS 13以上）で無料で使用できます。コンピュータ上でプログラムされたボクセル（3D空間におけるピクセルの立方体相当）を仮想空間に配置して楽しむことができます。
+While CubicPy is primarily based on Python programming, this extension allows you to send data from Scratch 3 to CubicPy to create object structures.
 
-詳細については、以下のサイトを参照してください。https://creativival.github.io/cubicpy
+### How to Use the CubicPy Extension
 
-## ✨ この拡張機能で何ができるのか
+Set up Xcratch following these steps:
 
-ボクセラミング拡張機能で何ができるのかを確認するために、サンプルプロジェクトを再生してみてください。
+1. Access [Xcratch](https://xcratch.github.io/editor/#https://creativival.github.io/cubicpy-extension/projects/example.sb3)
+2. A sample project that can use the "CubicPy Extension" will open
+3. The "CubicPy Extension" blocks will become available
+4. Modify the sample project to create your own structures
 
-[サンプルプロジェクト](https://xcratch.github.io/editor/#https://creativival.github.io/cubicpy-extension/projects/example.sb3)
+### Preparing the CubicPy Library
 
-<iframe src="https://xcratch.github.io/editor/player#https://creativival.github.io/cubicpy-extension/projects/example.sb3" width="540px" height="460px"></iframe>
+Install the CubicPy library on a computer with Python installed:
 
-## Xcratchでの使用方法
-
-この拡張機能は、Xcratchの他の拡張機能と一緒に使用できます。
-1.  [Xcratch Editor](https://xcratch.github.io/editor)を開く
-2. 左下の '拡張機能を追加' ボタンをクリックする
-3. '拡張機能を読み込む' エクステンションを選択する
-4. 入力フィールドにモジュールURLを入力する
-```
-https://creativival.github.io/cubicpy-extension/dist/cubicpy.mjs
+```bash
+python -m venv .venv
+source .venv/bin/activate
+pip install setuptools
+pip install cubicpy
 ```
 
-* この拡張機能は「ボクセラミングタートル」拡張機能と同時には使えません。
+### Starting CubicPy
 
-## ボクセラミングタートル拡張機能について
-
-ボクセラミングタートル拡張機能は、より直感的なプログラミングが可能であり、ボクセラミングの入門として、低学年の子供たち、プログラミング初心者のために開発されました。
-
-ボクセラミングタートル拡張機能は、タートルグラフィックスと呼ばれる図形描画ツールを提供します。 タートルグラフィックスは物理的な「亀」（ペンを持った小さなロボット）を想定します。亀は、前進、後退、左に回転、右に回転、ペンを上げる、ペンを下ろすなどの命令を受け取り、それに従って動きます。亀は、ペンを下ろしている間に移動した場所に線を描きます。タートルグラフィックスは、亀が描いた線を表示することで、亀の動きを可視化します。
-
-ボクセラミングタートル拡張機能については、以下のサイトを参照してください。https://creativival.github.io/cubicpy-turtle-extension/
-
-## 開発
-
-[README.md](README.md)
-
-### ローカルのXcratchに登録
-
-テストのためにこの拡張機能をローカルのXcratchにインストールするために、登録スクリプトを実行します。
-
-```
-npm run register
+```bash
+cubicpy -x -g 0
 ```
 
-### モジュールにバンドルする
+### Connecting the CubicPy Extension with the CubicPy Library
 
-この拡張機能をXcratchで読み込むことができるモジュールファイルにバンドルするために、ビルドスクリプトを実行します。
+1. When CubicPy functions in external communication mode, a 4-digit number will be displayed on the screen
+2. Enter that number (room name) into the Scratch "set room name to ()" block
+3. Double-click the Scratch block to send the data
+4. Once the WebSocket connection is established, cube construction will occur in CubicPy
 
-```
-npm run build
-```
+## License
 
-## 🏠 ホームページ
+MIT License
 
-このページはここから開けます https://creativival.github.io/cubicpy-extension/
+Copyright (c) 2024 creativival
 
-## 🤝 貢献
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
-貢献、問題、機能リクエストは大歓迎です！<br />お気軽に[issues page](https://github.com/https://creativival/cubicpy-extension/issues)をチェックしてみてください。
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+## Contributing
+
+Thank you for considering contributing to the project. You can contribute in the following ways:
+
+1. Reporting Bugs
+   - Report issues on GitHub
+   - Provide detailed reproduction steps
+   - Attach error messages or screenshots if available
+
+2. Feature Proposals
+   - Propose new features on GitHub Issues
+   - Describe specific use cases
+   - Include implementation suggestions if available
+
+3. Pull Requests
+   - Pull requests for bug fixes and feature additions are welcome
+   - Keep code changes small
+   - Add tests
+   - Follow coding conventions
+
+4. Documentation Improvements
+   - Fix typos in documentation
+   - Add or improve explanations
+   - Add sample code
+
+Thank you to all contributors.
+
+
