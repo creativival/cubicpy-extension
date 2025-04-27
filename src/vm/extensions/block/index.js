@@ -294,6 +294,84 @@ class ExtensionBlocks {
           }
         },
         {
+          opcode: 'addSphere',
+          blockType: BlockType.COMMAND,
+          text: formatMessage({
+            id: 'cubicpy.addSphere',
+            default: 'Create sphere at x: [X] y: [Y] z: [Z] red: [RED] green: [GREEN] blue: [BLUE] alpha: [ALPHA]',
+            description: 'create sphere'
+          }),
+          arguments: {
+            X: {
+              type: ArgumentType.NUMBER,
+              defaultValue: 0
+            },
+            Y: {
+              type: ArgumentType.NUMBER,
+              defaultValue: 0
+            },
+            Z: {
+              type: ArgumentType.NUMBER,
+              defaultValue: 0
+            },
+            RED: {
+              type: ArgumentType.NUMBER,
+              defaultValue: 0
+            },
+            GREEN: {
+              type: ArgumentType.NUMBER,
+              defaultValue: 0
+            },
+            BLUE: {
+              type: ArgumentType.NUMBER,
+              defaultValue: 0
+            },
+            ALPHA: {
+              type: ArgumentType.NUMBER,
+              defaultValue: 1
+            }
+          }
+        },
+        {
+          opcode: 'addCylinder',
+          blockType: BlockType.COMMAND,
+          text: formatMessage({
+            id: 'cubicpy.addCylinder',
+            default: 'Create cylinder at x: [X] y: [Y] z: [Z] red: [RED] green: [GREEN] blue: [BLUE] alpha: [ALPHA]',
+            description: 'create cylinder'
+          }),
+          arguments: {
+            X: {
+              type: ArgumentType.NUMBER,
+              defaultValue: 0
+            },
+            Y: {
+              type: ArgumentType.NUMBER,
+              defaultValue: 0
+            },
+            Z: {
+              type: ArgumentType.NUMBER,
+              defaultValue: 0
+            },
+            RED: {
+              type: ArgumentType.NUMBER,
+              defaultValue: 0
+            },
+            GREEN: {
+              type: ArgumentType.NUMBER,
+              defaultValue: 0
+            },
+            BLUE: {
+              type: ArgumentType.NUMBER,
+              defaultValue: 0
+            },
+            ALPHA: {
+              type: ArgumentType.NUMBER,
+              defaultValue: 1
+            }
+          }
+        },
+        {
           opcode: 'sendData',
           blockType: BlockType.COMMAND,
           text: formatMessage({
@@ -399,6 +477,21 @@ class ExtensionBlocks {
             }
           }
         },
+        {
+          opcode: 'setBottomLeftText',
+          blockType: BlockType.COMMAND,
+          text: formatMessage({
+            id: 'cubicpy.setBottomLeftText',
+            default: 'Display bottom left text: [TEXT]',
+            description: 'display game text'
+          }),
+          arguments: {
+            TEXT: {
+              type: ArgumentType.STRING,
+              defaultValue: 'Hello World',
+            }
+          }
+        }, 
         {
           opcode: 'pushMatrix',
           blockType: BlockType.COMMAND,
@@ -540,7 +633,7 @@ class ExtensionBlocks {
     this.velocityZ = Number(args.VELOCITY_Z);
   }
 
-  addCube(args) {
+  addObject(args, objectType) {
     let x = Number(args.X);
     let y = Number(args.Y);
     let z = Number(args.Z);
@@ -561,7 +654,7 @@ class ExtensionBlocks {
     let velocityZ = this.velocityZ;
 
     this.bodyData.push({
-      type: 'cube',
+      type: objectType,
       pos: [x, y, z],
       scale: [scaleX, scaleY, scaleZ],
       color: [red, green, blue],
@@ -573,17 +666,35 @@ class ExtensionBlocks {
     });
   }
 
+  addCube(args) {
+    this.addObject(args, 'cube');
+  }
+
+  addSphere(args) {
+    this.addObject(args, 'sphere');
+  }
+
+  addCylinder(args) {
+    this.addObject(args, 'cylinder');
+  }
+
   // テキストを表示する
   setTopLeftText(args) {
     const text = args.TEXT;
 
-    this.topLeftText = text;
+    this.bodyData.push({
+      type: 'top_left_text',
+      text: text,
+    });
   }
 
   setBottomLeftText(args) {
     const text = args.TEXT;
 
-    this.bottomLeftText = text;
+    this.bodyData.push({
+      type: 'bottom_left_text',
+      text: text,
+    });
   }
 
   setCommand(args) {
