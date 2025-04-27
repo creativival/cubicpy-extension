@@ -18,7 +18,7 @@ const entry = {
     get name () {
         return formatMessage({
             id: 'cubicpy.entry.name',
-            default: 'Voxelamming',
+            default: 'CubicPy',
             description: 'name of the extension'
         });
     },
@@ -29,7 +29,7 @@ const entry = {
     insetIconURL: insetIconURL,
     get description () {
         return formatMessage({
-            defaultMessage: 'Enjoy creating AR voxel art!',
+            defaultMessage: 'Enjoy creating 3D voxel art!',
             description: 'Description for this extension',
             id: 'cubicpy.entry.description'
         });
