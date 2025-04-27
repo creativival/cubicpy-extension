@@ -1,6 +1,6 @@
 # CubicPy Scratch 3 Extension
 
-*[日本語](https://creativival.github.io/cubicpy-extension/)* | English
+*[日本語](https://creativival.github.io/cubicpy-extension/README.ja)* | English
 
 ![CubicPy Logo](https://creativival.github.io/CubicPy/assets/cubicpy_logo.png)
 
