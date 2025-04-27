@@ -325,6 +325,7 @@ var ExtensionBlocks = /*#__PURE__*/function () {
     this.velocityX = 0;
     this.velocityY = 0;
     this.velocityZ = 0;
+    this.isAllowedFloat = true;
     this.socket = null;
     this.inactivityTimeout = null; // 非アクティブタイマー
     this.inactivityDelay = 2000; // 2秒後に接続を切断
@@ -911,7 +912,10 @@ var ExtensionBlocks = /*#__PURE__*/function () {
     key: "setCommand",
     value: function setCommand(args) {
       var command = args.COMMAND;
-      this.commands.push(command);
+      this.bodyData.push({
+        type: 'command',
+        command: command
+      });
     }
   }, {
     key: "sendData",

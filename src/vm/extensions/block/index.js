@@ -98,6 +98,7 @@ class ExtensionBlocks {
     this.velocityX = 0;
     this.velocityY = 0;
     this.velocityZ = 0;
+    this.isAllowedFloat = true;
 
     this.socket = null;
     this.inactivityTimeout = null; // 非アクティブタイマー
@@ -691,7 +692,11 @@ class ExtensionBlocks {
 
   setCommand(args) {
     const command = args.COMMAND;
-    this.commands.push(command);
+
+    this.bodyData.push({
+      type: 'command',
+      command: command,
+    });
   }
 
   sendData() {
