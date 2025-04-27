@@ -2,8 +2,8 @@
  * This is an extension for Xcratch.
  */
 
-import iconURL from './cubicpy_600x372.png';
-import insetIconURL from './cubicpy_80x80.png';
+import iconURL from './cubicpy_logo_600x372.png';
+import insetIconURL from './cubicpy_logo_80x80.png';
 import translations from './translations.json';
 
 /**

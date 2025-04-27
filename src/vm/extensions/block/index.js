@@ -1,7 +1,7 @@
 import BlockType from '../../extension-support/block-type';
 import ArgumentType from '../../extension-support/argument-type';
 import translations from './translations.json';
-import blockIcon from './cubicpy_40x40_transparent.png';
+import blockIcon from './cubicpy_logo_40x40.png';
 
 /**
  * Formatter which is used for translation.
@@ -94,13 +94,10 @@ class ExtensionBlocks {
     this.rotationP = 0;
     this.rotationR = 0;
     this.basePoint = 0;
-    this.isRemovable = true;
+    this.isRemovable = false;
     this.velocityX = 0;
     this.velocityY = 0;
     this.velocityZ = 0;
-    this.topLeftText = '';
-    this.topBottomText = '';
-    this.commands = [];
 
     this.socket = null;
     this.inactivityTimeout = null; // 非アクティブタイマー
@@ -553,30 +550,25 @@ class ExtensionBlocks {
     this.rotationP = 0;
     this.rotationR = 0;
     this.basePoint = 0;
-    this.isRemovable = true;
+    this.isRemovable = false;
     this.velocityX = 0;
     this.velocityY = 0;
     this.velocityZ = 0;
-    this.topLeftText = '';
-    this.topBottomText = '';
-    this.commands = [];
   }
 
   pushMatrix() {    
     this.bodyData.push({
       type: 'push_matrix',
-      pos: [x, y, z]
     })
   }
 
   popMatrix() {    
     this.bodyData.push({
       type: 'pop_matrix',
-      pos: [x, y, z]
     })
   }
 
-  translate(args) {  // method name changed from translate to translate.
+  translate(args) {
     const x = Number(args.X);
     const y = Number(args.Y);
     const z = Number(args.Z);
