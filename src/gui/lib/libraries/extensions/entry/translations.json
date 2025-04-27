@@ -1,0 +1,14 @@
+{
+  "en": {
+    "cubicpy.entry.name": "CubicPy",
+    "cubicpy.entry.description": "Enjoy creating 3D voxel art!"
+  },
+  "ja": {
+    "cubicpy.entry.name": "キュービックパイ",
+    "cubicpy.entry.description": "3Dボクセルアートを作って遊ぼう！"
+  },
+  "ja-Hira": {
+    "cubicpy.entry.name": "キュービックパイ",
+    "cubicpy.entry.description": "3Dボクセルアートをつくってあそぼう！"
+  }
+}

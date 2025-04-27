@@ -1,0 +1,15 @@
+{
+  "name": "cubicpy-extension",
+  "version": "0.0.0",
+  "scripts": {
+    "register": "npx xcratch-register --id=cubicpy --gui=../scratch-gui --block=./src/vm/extensions/block --entry=./src/gui/lib/libraries/extensions/entry --core --link --use=extension-support util",
+    "build": "npx xcratch-build --module=cubicpy --gui=../scratch-gui --block=./src/vm/extensions/block --entry=./src/gui/lib/libraries/extensions/entry"
+  },
+  "devDependencies": {
+    "xcratch-build": "^0.4.0",
+    "xcratch-register": "^0.4.2"
+  },
+  "volta": {
+    "node": "21.6.2"
+  }
+}
